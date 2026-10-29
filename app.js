@@ -32,69 +32,31 @@ const toggle = document.querySelector("button");
     })
 }
 
-/*
-
-//Barrar pop up automático de instalação
-let deferredInstallPrompt = null;
-
-window.addEventListener("beforeinstallprompt", (event) => {
-  // Prevent the browser's automatic installation prompt
-  event.preventDefault();
-
-  // Save the event so installation can be offered later
-  deferredInstallPrompt = event;
-
-  console.log("PWA install prompt saved for later");
+// This variable will save the event for later use.
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevents the default mini-infobar or install dialog from appearing on mobile
+  e.preventDefault();
+  // Save the event because you'll need to trigger it later.
+  deferredPrompt = e;
+  // Show your customized install prompt for your PWA
+  // Your own UI doesn't have to be a single element, you
+  // can have buttons in different locations, or wait to prompt
+  // as part of a critical journey.
+ // showInAppInstallPromotion();
 });
-
-
-
-//funcionalidade do botao de instalar
-
-let deferredInstallPrompt = null;
-
-const installButton = document.querySelector("#install-button");
-
-window.addEventListener("beforeinstallprompt", (event) => {
-  event.preventDefault();
-
-  deferredInstallPrompt = event;
-
-  //--------- Show your own button instead of the browser's prompt
-  installButton.hidden = false;
-});
-
-installButton.addEventListener("click", async () => {
-  if (!deferredInstallPrompt) return;
-
-  //------------------- Trigger the browser's installation dialog on demand
-  deferredInstallPrompt.prompt();
-
-  await deferredInstallPrompt.userChoice;
-
-  //------------- This event can only be used once
-  deferredInstallPrompt = null;
-  installButton.hidden = true;
-});
-
-window.addEventListener("appinstalled", () => {
-  deferredInstallPrompt = null;
-  installButton.hidden = true;
-});
-
-*/
 
 const installButton = document.querySelector("#install-button");
 
 installButton.addEventListener("click", async () => {
-  if (!deferredInstallPrompt) return;
+  if (!deferredPrompt) return;
 
   //------------------- Trigger the browser's installation dialog on demand
-  deferredInstallPrompt.prompt();
+  deferredPrompt.prompt();
 
-  await deferredInstallPrompt.userChoice;
+  await  deferredPrompt.userChoice;
 
   //------------- This event can only be used once
-  deferredInstallPrompt = null;
+   deferredPrompt = null;
   installButton.hidden = true;
 });
