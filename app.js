@@ -71,9 +71,7 @@ installButton.addEventListener("click", async () => {
 //Instalar no iOS (share window)
 const installButton2 = document.querySelector("#install-button-2");
 const shareData = {
-  title: "Sun and Moon",
   text: "Install App Now!",
-  url: "https://developer.mozilla.org",
 };
 
 installButton2.addEventListener("click", async () => {
