@@ -16,6 +16,9 @@ const toggle = document.querySelector("button");
       } else {
         image.setAttribute("src", "./moon.png");
       }
+
+      var versionText = document.querySelector("p");
+      versionText.classList.toggle("blackP");
     });
 
 
@@ -66,7 +69,7 @@ installButton.addEventListener("click", async () => {
 
 
 //Instalar no iOS (share window)
-const installButton2 = document.querySelector("#install-button2");
+const installButton2 = document.querySelector("#install-button-2");
 const shareData = {
   title: "Sun and Moon",
   text: "Install App Now!",
