@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "sun-and-moon-v1";
+const CACHE_NAME = "sun-and-moon-v15";
 
 const assets = [
   "./",
