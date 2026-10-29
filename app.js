@@ -18,6 +18,8 @@ const toggle = document.querySelector("button");
       }
     });
 
+
+
 //registrar service worker
     if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
@@ -32,20 +34,20 @@ const toggle = document.querySelector("button");
     })
 }
 
-// This variable will save the event for later use.
+
+
+// Barrar pop up automatico de instalaçao do pwa
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevents the default mini-infobar or install dialog from appearing on mobile
+ 
   e.preventDefault();
-  // Save the event because you'll need to trigger it later.
+  
   deferredPrompt = e;
-  // Show your customized install prompt for your PWA
-  // Your own UI doesn't have to be a single element, you
-  // can have buttons in different locations, or wait to prompt
-  // as part of a critical journey.
- // showInAppInstallPromotion();
 });
 
+
+
+// Configurar botao de instalaçao (Android)
 const installButton = document.querySelector("#install-button");
 
 installButton.addEventListener("click", async () => {
@@ -56,7 +58,26 @@ installButton.addEventListener("click", async () => {
 
   await  deferredPrompt.userChoice;
 
-  //------------- This event can only be used once
+  //--------------------- This event can only be used once
    deferredPrompt = null;
   installButton.hidden = true;
 });
+
+
+
+//Instalar no iOS (share window)
+const installButton2 = document.querySelector("#install-button2");
+const shareData = {
+  title: "Sun and Moon",
+  text: "Install App Now!",
+  url: "https://developer.mozilla.org",
+};
+
+installButton2.addEventListener("click", async () => {
+    try {
+    await navigator.share(shareData);
+    resultPara.textContent = "MDN shared successfully";
+  } catch (err) {
+    resultPara.textContent = `Error: ${err}`;
+  }
+})
