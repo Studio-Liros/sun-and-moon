@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sun and Moon</title>
+  <link rel="manifest" href="./manifest.json">
+  
+  <!-- iOS ICONS -->
+    <link rel="apple-touch-icon" href="./icon_256x256.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#3f1536">
+    <meta name="theme-color" content="#3f1536">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #000;
+      transition: background-color 240ms ease;
+    }
+
+    body.is-on {
+      background: #fff;
+    }
+
+    button {
+      min-width: 112px;
+      min-height: 48px;
+      border: 1px solid #888;
+      border-radius: 4px;
+      background: #777;
+      color: #fff;
+      font: 600 16px/1 system-ui, sans-serif;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
+
+    button:hover {
+      background: #666;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #999;
+      outline-offset: 4px;
+    }
+
+    img {
+      padding: 0;
+      margin: 0;
+    }
+
+    p {
+      color: white;
+    }
+
+    .astros {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="astros">
+    <p> v12.2 </p>
+    <img class="astro" src="./moon.png" alt="sun or moon">
+    <button type="button" aria-pressed="false">On/Off</button>
+    <button id="install-button">Install app</button>
+  </div>
+
+
+<script src="./app.js"></script>
+  
+</body>
+
+</html>
